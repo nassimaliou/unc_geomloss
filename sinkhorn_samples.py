@@ -417,6 +417,11 @@ def sinkhorn_online(
     C_yx = cost(y, x.detach())  # (B,M,N) torch Tensor
     C_yx = C_yx + pred_unc_t
 
+    # N.B.: The "auto-correlation" matrices C(x_i, x_j) and C(y_i, y_j)
+    #       are only used by the "debiased" Sinkhorn algorithm.
+    C_xx = cost(x, x.detach()) if debias else None  # (B,N,N) torch Tensor
+    C_yy = cost(y, y.detach()) if debias else None  # (B,M,M) torch Tensor
+
     diameter, eps, eps_list, rho = scaling_parameters(
         x, y, p, blur, reach, diameter, scaling
     )
