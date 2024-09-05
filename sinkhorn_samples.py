@@ -372,7 +372,7 @@ def sinkhorn_online(
     x,
     b,
     y,
-    pred_unc_t
+    pred_unc_t,
     p=2,
     blur=0.05,
     reach=None,
