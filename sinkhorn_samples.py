@@ -181,9 +181,9 @@ def sinkhorn_tensorized(
     # in the `sinkhorn_loop(...)` routine, in the `sinkhorn_divergence.py` file.
     # Please refer to the comments in this file for more details.
     C_xy = cost(x, y.detach())  # (B,N,M) torch Tensor
-    C_xy = C_xy + pred_unc_t.permute(0, 2, 1)
+    #C_xy = C_xy + pred_unc_t.permute(0, 2, 1)
     C_yx = cost(y, x.detach())  # (B,M,N) torch Tensor
-    C_yx = C_yx + pred_unc_t
+    #C_yx = C_yx + pred_unc_t
 
     # N.B.: The "auto-correlation" matrices C(x_i, x_j) and C(y_i, y_j)
     #       are only used by the "debiased" Sinkhorn algorithm.
